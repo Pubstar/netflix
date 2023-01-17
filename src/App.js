@@ -73,7 +73,7 @@ function App() {
             <button className="bg-black text-gray-400 border border-gray-400 py-2 px-4">Watch Later</button>
           </div>
           <span className=' text-gray-500 mb-3'>Released {moviesPopular[randomMovie] && moviesPopular[randomMovie].release_date}</span>
-          <p>{moviesPopular[randomMovie] && moviesPopular[randomMovie].overview}</p>
+          <p className=' lg:w-[50%]'>{moviesPopular[randomMovie] && moviesPopular[randomMovie].overview}</p>
         </div>
       </div>
       <div className='bg-black h-screen p-4'> {/* Main */}
