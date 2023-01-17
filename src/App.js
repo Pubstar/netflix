@@ -58,7 +58,7 @@ function App() {
     <div className=' text-white'>
       <div className='h-[550px] text-white font-semibold'> {/* Header */}
         <div className='absolute w-full h-[550px] z-[-19] bg-gradient-to-r from-black/80'></div>
-        <img className='absolute z-[-20] w-full h-[550px] object-cover' src={`https://image.tmdb.org/t/p/original/${moviesPopular[randomMovie] && moviesPopular[randomMovie].backdrop_path}`} alt={`${moviesPopular[randomMovie] && moviesPopular[randomMovie].title}`}></img>
+        <img className='absolute z-[-20] w-full h-[550px] object-fill' src={`https://image.tmdb.org/t/p/original/${moviesPopular[randomMovie] && moviesPopular[randomMovie].backdrop_path}`} alt={`${moviesPopular[randomMovie] && moviesPopular[randomMovie].title}`}></img>
         <div className="flex justify-between p-4"> {/* Navbar */}
           <span className=" text-red-700 text-3xl font-bold cursor-pointer">NETFLIX</span>
           <div>
