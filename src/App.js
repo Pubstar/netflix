@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs'
+import { GiHamburgerMenu } from 'react-icons/gi'
+
 
 function App() {
 
@@ -59,12 +61,13 @@ function App() {
       <div className='h-[550px] text-white font-semibold'> {/* Header */}
         <div className='absolute w-full h-[550px] z-[-19] bg-gradient-to-r from-black/80'></div>
         <img className='absolute z-[-20] w-full h-[550px] object-fill' src={`https://image.tmdb.org/t/p/original/${moviesPopular[randomMovie] && moviesPopular[randomMovie].backdrop_path}`} alt={`${moviesPopular[randomMovie] && moviesPopular[randomMovie].title}`}></img>
-        <div className="flex justify-between p-4"> {/* Navbar */}
+        <div className="flex justify-between items-center p-4"> {/* Navbar */}
           <span className=" text-red-700 text-3xl font-bold cursor-pointer">NETFLIX</span>
-          <div>
+          <div className='scale-0 md:scale-100'>
             <button className="mx-3">Sign In</button>
             <button className="bg-red-700 rounded-md py-2 px-4 text-white">Sign Up</button>
           </div>
+          <GiHamburgerMenu className=' scale-150 md:scale-0 md:absolute cursor-pointer' />
         </div>
         <div className="px-4 h-full justify-center flex flex-col">
           <h1 className="text-4xl font-semibold mb-5">{moviesPopular[randomMovie] && moviesPopular[randomMovie].original_title}</h1>
@@ -73,7 +76,7 @@ function App() {
             <button className="bg-black text-gray-400 border border-gray-400 py-2 px-4">Watch Later</button>
           </div>
           <span className=' text-gray-500 mb-3'>Released {moviesPopular[randomMovie] && moviesPopular[randomMovie].release_date}</span>
-          <p className=' lg:w-[50%]'>{moviesPopular[randomMovie] && moviesPopular[randomMovie].overview}</p>
+          <p className=' lg:w-[40%]'>{moviesPopular[randomMovie]?.overview.slice(0, 125) + '...'}</p>
         </div>
       </div>
       <div className='bg-black h-screen p-4'> {/* Main */}
