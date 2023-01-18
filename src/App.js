@@ -8,6 +8,7 @@ function App() {
   const sliderUpcoming = document.getElementById('sliderUpcoming');
   const sliderPopular = document.getElementById('sliderPopular');
   const sliderTrending = document.getElementById('sliderTrending');
+  const navOverlay = document.getElementById('navOverlay');
   const [moviesPopular, setmoviesPopular] = useState([]);
   const [moviesUpcoming, setmoviesUpcoming] = useState([]);
   const [moviesTrending, setmoviesTrending] = useState([]);
@@ -56,8 +57,20 @@ function App() {
     sliderTrending.scrollLeft = sliderTrending.scrollLeft + 500;
   }
 
+  const handleBurgerIcon = () => {
+    if (navOverlay.style.visibility === 'visible') {
+      navOverlay.style.visibility = 'hidden'
+    } else {
+      navOverlay.style.visibility = 'visible'
+    }
+  }
+
   return (
     <div className=' text-white'>
+      <div id='navOverlay' style={{ 'visibility': 'hidden', }} className='z-40 fixed h-screen w-full bg-black/95 flex items-center justify-center flex-col gap-20'>
+        <button className="mx-3 scale-150">Sign In</button>
+        <button className="bg-red-700 rounded-md py-2 px-4 text-white scale-150">Sign Up</button>
+      </div>
       <div className='h-[550px] text-white font-semibold'> {/* Header */}
         <div className='absolute w-full h-[550px] z-[-19] bg-gradient-to-r from-black/80'></div>
         <img className='absolute z-[-20] w-full h-[550px] object-fill' src={`https://image.tmdb.org/t/p/original/${moviesPopular[randomMovie] && moviesPopular[randomMovie].backdrop_path}`} alt={`${moviesPopular[randomMovie] && moviesPopular[randomMovie].title}`}></img>
@@ -67,7 +80,7 @@ function App() {
             <button className="mx-3">Sign In</button>
             <button className="bg-red-700 rounded-md py-2 px-4 text-white">Sign Up</button>
           </div>
-          <GiHamburgerMenu className=' scale-150 md:scale-0 md:absolute cursor-pointer' />
+          <GiHamburgerMenu onClick={handleBurgerIcon} className='z-50 scale-150 md:scale-0 md:absolute cursor-pointer' />
         </div>
         <div className="px-4 h-full justify-center flex flex-col">
           <h1 className="text-4xl font-semibold mb-5">{moviesPopular[randomMovie] && moviesPopular[randomMovie].original_title}</h1>
@@ -110,7 +123,7 @@ function App() {
                 )
               })}</div>
           </div>
-          <h2 className='font-bold text-lg mb-5'>Trending</h2>
+          <h2 className='font-bold text-lg mb-5 '>Trending</h2>
           <div className='relative group/arrows'>
             <BsArrowLeftCircleFill onClick={scrollLeftTrending} className='scale-0 group-hover/arrows:scale-100 absolute w-10 h-10 z-50 top-20 left-5 cursor-pointer' />
             <BsArrowRightCircleFill onClick={scrollRightTrending} className='scale-0 group-hover/arrows:scale-100 absolute w-10 h-10 z-50 top-20 right-5 cursor-pointer' />
